@@ -1,5 +1,6 @@
 package dev.raniery.shop.client.response;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 public record StoreProductResponse(
@@ -7,5 +8,5 @@ public record StoreProductResponse(
     String title,
     BigDecimal price,
     String description,
-    String[] images) {
+    String[] images) implements Serializable {
 }
