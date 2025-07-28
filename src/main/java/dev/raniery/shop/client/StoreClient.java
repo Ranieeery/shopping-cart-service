@@ -15,5 +15,5 @@ public interface StoreClient {
     List<StoreProductResponse> getProducts();
 
     @GetMapping("/products/{id}")
-    StoreProductResponse getProductById(@PathVariable Long  id);
+    StoreProductResponse getProductById(@PathVariable Long id);
 }
