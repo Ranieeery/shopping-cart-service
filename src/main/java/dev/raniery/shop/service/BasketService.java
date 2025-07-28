@@ -19,6 +19,10 @@ public class BasketService {
     private final BasketRepository basketRepository;
     private final ProductService productService;
 
+    public Basket getBasketById(String id) {
+        return basketRepository.findById(id).orElse(null);
+    }
+
     public Basket createBasket(BasketRequest basketRequest) {
 
         basketRepository.findByClientAndStatus(basketRequest.clientId(), Status.OPEN)
