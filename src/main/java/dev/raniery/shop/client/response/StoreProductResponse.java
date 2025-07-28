@@ -7,6 +7,5 @@ public record StoreProductResponse(
     Long id,
     String title,
     BigDecimal price,
-    String description,
     String[] images) implements Serializable {
 }
