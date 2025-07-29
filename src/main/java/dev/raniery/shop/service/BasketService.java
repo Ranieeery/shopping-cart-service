@@ -30,6 +30,31 @@ public class BasketService {
                 throw new IllegalArgumentException("Basket already exists for this client");
             });
 
+        List<Product> products = basketBuild(basketRequest);
+
+        Basket basket = Basket.builder()
+            .client(basketRequest.clientId())
+            .status(Status.OPEN)
+            .products(products)
+            .build();
+
+        basket.calculateTotalPrice();
+        return basketRepository.save(basket);
+    }
+
+    public Basket updateBasket(String id, BasketRequest basketRequest) {
+        Basket savedBasket = getBasketById(id);
+
+        List<Product> products = basketBuild(basketRequest);
+
+        savedBasket.setProducts(products);
+
+        savedBasket.calculateTotalPrice();
+
+        return basketRepository.save(savedBasket);
+    }
+
+    private List<Product> basketBuild(BasketRequest basketRequest) {
         List<Product> products = new ArrayList<>();
 
         basketRequest.products().forEach(productRequest -> {
@@ -44,13 +69,6 @@ public class BasketService {
                 .build());
         });
 
-        Basket basket = Basket.builder()
-            .client(basketRequest.clientId())
-            .status(Status.OPEN)
-            .products(products)
-            .build();
-
-        basket.calculateTotalPrice();
-        return basketRepository.save(basket);
+        return products;
     }
 }
