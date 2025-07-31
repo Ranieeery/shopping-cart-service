@@ -64,6 +64,12 @@ public class BasketService {
         return basketRepository.save(savedBasket);
     }
 
+    public void deleteBasket(String id) {
+        Basket savedBasket = getBasketById(id);
+
+        basketRepository.delete(savedBasket);
+    }
+
     private List<Product> basketBuild(BasketRequest basketRequest) {
         List<Product> products = new ArrayList<>();
 
