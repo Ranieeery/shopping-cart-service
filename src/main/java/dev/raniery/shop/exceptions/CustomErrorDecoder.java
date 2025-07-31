@@ -2,7 +2,6 @@ package dev.raniery.shop.exceptions;
 
 import feign.Response;
 import feign.codec.ErrorDecoder;
-import org.apache.coyote.BadRequestException;
 
 public class CustomErrorDecoder implements ErrorDecoder {
     @Override

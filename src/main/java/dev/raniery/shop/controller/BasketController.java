@@ -4,6 +4,7 @@ import dev.raniery.shop.entity.Basket;
 import dev.raniery.shop.entity.request.BasketRequest;
 import dev.raniery.shop.entity.request.PaymentRequest;
 import dev.raniery.shop.service.BasketService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,17 +23,17 @@ public class BasketController {
     }
 
     @PostMapping
-    public ResponseEntity<Basket> createBasket(@RequestBody BasketRequest request) {
+    public ResponseEntity<Basket> createBasket(@Valid @RequestBody BasketRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(basketService.createBasket(request));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Basket> updateBasket(@PathVariable String id, @RequestBody BasketRequest request) {
+    public ResponseEntity<Basket> updateBasket(@PathVariable String id, @Valid @RequestBody BasketRequest request) {
         return ResponseEntity.status(HttpStatus.OK).body(basketService.updateBasket(id, request));
     }
 
     @PatchMapping("/{id}/payment")
-    public ResponseEntity<Basket> payBasket(@PathVariable String id, @RequestBody PaymentRequest request) {
+    public ResponseEntity<Basket> payBasket(@PathVariable String id, @Valid @RequestBody PaymentRequest request) {
         return ResponseEntity.status(HttpStatus.OK).body(basketService.updatePaymentBasket(id, request));
     }
 
