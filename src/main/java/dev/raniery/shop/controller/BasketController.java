@@ -1,5 +1,6 @@
 package dev.raniery.shop.controller;
 
+import dev.raniery.shop.controller.doc.BasketControllerInterface;
 import dev.raniery.shop.entity.Basket;
 import dev.raniery.shop.entity.request.BasketRequest;
 import dev.raniery.shop.entity.request.PaymentRequest;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/basket")
 @RequiredArgsConstructor
-public class BasketController {
+public class BasketController implements BasketControllerInterface {
 
     private final BasketService basketService;
 

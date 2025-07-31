@@ -1,6 +1,7 @@
 package dev.raniery.shop.controller;
 
 import dev.raniery.shop.client.response.StoreProductResponse;
+import dev.raniery.shop.controller.doc.ProductControllerInterface;
 import dev.raniery.shop.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
-public class ProductController {
+public class ProductController implements ProductControllerInterface {
 
     private final ProductService productService;
 
