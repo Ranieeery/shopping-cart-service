@@ -6,6 +6,8 @@ import dev.raniery.shop.entity.Product;
 import dev.raniery.shop.entity.Status;
 import dev.raniery.shop.entity.request.BasketRequest;
 import dev.raniery.shop.entity.request.PaymentRequest;
+import dev.raniery.shop.exceptions.BusinessException;
+import dev.raniery.shop.exceptions.DataNotFoundException;
 import dev.raniery.shop.repository.BasketRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,17 +23,18 @@ public class BasketService {
     private final ProductService productService;
 
     public Basket getBasketById(String id) {
-        return basketRepository.findById(id).orElse(null);
+        return basketRepository.findById(id)
+            .orElseThrow(() -> new DataNotFoundException("Basket with id " + id + " not found"));
     }
 
     public Basket createBasket(BasketRequest basketRequest) {
 
         basketRepository.findByClientAndStatus(basketRequest.clientId(), Status.OPEN)
             .ifPresent(basket -> {
-                throw new IllegalArgumentException("Basket already exists for this client");
+                throw new BusinessException("Basket already exists for this client");
             });
 
-        List<Product> products = basketBuild(basketRequest);
+        List<Product> products = getProducts(basketRequest);
 
         Basket basket = Basket.builder()
             .client(basketRequest.clientId())
@@ -46,7 +49,7 @@ public class BasketService {
     public Basket updateBasket(String id, BasketRequest basketRequest) {
         Basket savedBasket = getBasketById(id);
 
-        List<Product> products = basketBuild(basketRequest);
+        List<Product> products = getProducts(basketRequest);
 
         savedBasket.setProducts(products);
 
@@ -70,7 +73,7 @@ public class BasketService {
         basketRepository.delete(savedBasket);
     }
 
-    private List<Product> basketBuild(BasketRequest basketRequest) {
+    private List<Product> getProducts(BasketRequest basketRequest) {
         List<Product> products = new ArrayList<>();
 
         basketRequest.products().forEach(productRequest -> {
