@@ -4,6 +4,5 @@ import java.util.List;
 
 public record BasketRequest(
     Long clientId,
-    List<ProductsRequest> products
-) {
+    List<ProductsRequest> products) {
 }

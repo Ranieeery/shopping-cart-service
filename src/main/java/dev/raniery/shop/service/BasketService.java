@@ -5,6 +5,7 @@ import dev.raniery.shop.entity.Basket;
 import dev.raniery.shop.entity.Product;
 import dev.raniery.shop.entity.Status;
 import dev.raniery.shop.entity.request.BasketRequest;
+import dev.raniery.shop.entity.request.PaymentRequest;
 import dev.raniery.shop.repository.BasketRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -50,6 +51,15 @@ public class BasketService {
         savedBasket.setProducts(products);
 
         savedBasket.calculateTotalPrice();
+
+        return basketRepository.save(savedBasket);
+    }
+
+    public Basket updatePaymentBasket(String id, PaymentRequest request) {
+        Basket savedBasket = getBasketById(id);
+
+        savedBasket.setPaymentMethod(request.getPaymentMethod());
+        savedBasket.setStatus(Status.SOLD);
 
         return basketRepository.save(savedBasket);
     }
