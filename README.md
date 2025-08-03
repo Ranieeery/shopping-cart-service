@@ -39,31 +39,37 @@ Make sure you have the following installed:
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    ```
 
 2. **Start the required services**
-   ```bash
+
+```bash
    docker-compose up -d
    ```
+
    This will start:
     - MongoDB on port 27017
     - Redis on port 6379
 
 3. **Build the application**
-   ```bash
+
+```bash
    ./mvnw clean install
    ```
 
 ### Running the Application
 
 1. **Using Maven**
+
    ```bash
    ./mvnw spring-boot:run
    ```
 
 2. **Using Java**
+
    ```bash
    java -jar target/cart-0.0.1-SNAPSHOT.jar
    ```
@@ -79,7 +85,7 @@ Once the application is running, you can access the API documentation at:
 
 ## Project Structure
 
-```
+```structure
 src/
 ├── main/
 │   ├── java/dev/raniery/shop/
@@ -140,4 +146,3 @@ The project includes Docker Compose configuration for easy development setup:
 
 - **MongoDB**: Document database for data persistence
 - **Redis**: In-memory cache for improved performance
- 
