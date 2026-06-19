@@ -19,4 +19,10 @@ public class ControllerAdvice {
     public String handleBusinessException(BusinessException e) {
         return e.getMessage();
     }
+
+    @ExceptionHandler(RegisterException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleRegisterException(RegisterException e) {
+        return e.getMessage();
+    }
 }
