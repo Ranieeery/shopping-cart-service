@@ -1,4 +1,4 @@
-package dev.raniery.shop.exceptions;
+package dev.raniery.shop.infra.exceptions;
 
 import feign.Response;
 import feign.codec.ErrorDecoder;

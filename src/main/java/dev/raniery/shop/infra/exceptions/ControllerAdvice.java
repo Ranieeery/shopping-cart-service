@@ -1,4 +1,4 @@
-package dev.raniery.shop.exceptions;
+package dev.raniery.shop.infra.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

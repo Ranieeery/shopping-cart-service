@@ -20,3 +20,6 @@ spring:
 shop:
   client:
     platzi: https://api.escuelajs.co/api/v1
+
+jwt:
+  secret: ${JWT_SECRET:secret}

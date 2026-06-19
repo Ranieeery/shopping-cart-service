@@ -1,4 +1,4 @@
-package dev.raniery.shop.exceptions;
+package dev.raniery.shop.infra.exceptions;
 
 public class DataNotFoundException extends RuntimeException {
 

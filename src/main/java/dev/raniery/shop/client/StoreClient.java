@@ -1,7 +1,7 @@
 package dev.raniery.shop.client;
 
 import dev.raniery.shop.client.response.StoreProductResponse;
-import dev.raniery.shop.exceptions.CustomErrorDecoder;
+import dev.raniery.shop.infra.exceptions.CustomErrorDecoder;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
