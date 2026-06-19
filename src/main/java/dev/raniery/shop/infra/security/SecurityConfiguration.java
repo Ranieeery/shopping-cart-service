@@ -25,7 +25,6 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    //TODO: Custom Exception
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
             .csrf(AbstractHttpConfigurer::disable)
@@ -41,7 +40,6 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    //TODO: Custom Exception
     public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }

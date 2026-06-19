@@ -29,7 +29,6 @@ public class TokenService {
 
             return token;
         } catch (JWTCreationException e) {
-            //TODO: Custom Exception
             throw new RuntimeException("Error generating token", e);
         }
     }
@@ -43,7 +42,7 @@ public class TokenService {
                 .build()
                 .verify(token)
                 .getSubject();
-        }catch (JWTVerificationException e) {
+        } catch (JWTVerificationException e) {
             return "";
         }
     }
