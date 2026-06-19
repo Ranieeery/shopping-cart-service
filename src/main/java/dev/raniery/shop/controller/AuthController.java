@@ -1,5 +1,7 @@
 package dev.raniery.shop.controller;
 
+import dev.raniery.shop.controller.doc.AuthControllerInterface;
+import dev.raniery.shop.controller.doc.BasketControllerInterface;
 import dev.raniery.shop.entity.Users;
 import dev.raniery.shop.entity.request.AuthenticationRequest;
 import dev.raniery.shop.entity.request.RegisterRequest;
@@ -21,8 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("auth")
 @RequiredArgsConstructor
 //TODO: mover lógica para o service
-//TODO: doc
-public class AuthController {
+public class AuthController implements AuthControllerInterface {
 
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
